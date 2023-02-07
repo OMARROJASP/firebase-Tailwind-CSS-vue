@@ -6,7 +6,7 @@ import {createUserWithEmailAndPassword,
     onAuthStateChanged
 
 } from 'firebase/auth'
-import {useDatabaseStore} from "../database";
+import {useDatabaseStore} from "./database";
 import router from "../router";
 
 export const useUserStore = defineStore("user",{

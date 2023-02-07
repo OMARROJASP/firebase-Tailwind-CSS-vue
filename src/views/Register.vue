@@ -1,14 +1,33 @@
 <template>
-<h1>Register</h1>
+  <div class="bg-cover bg-center"
+       style="background-image: url('https://www.gilbarco.com/la/sites/gilbarco.com.la/files/article/images/montar-posto-de-gasolina-1.jpg')">
+    <h1 class="text-center pt-5  m-5 text-2xl">Register</h1>
 
-  <div>
-    <form @submit.prevent="handleSubmit">
-      <div><input type="email" placeholder="Enter your email" v-model.trim="email" ></div>
-      <div><input type="password" placeholder="Enter your password" v-model.trim="password"></div>
-      <div><input type="password" placeholder="Repeat your password" v-model.trim="repassword"></div>
-      <button type="submit">Register</button>
-    </form>
+    <div class="flex  justify-center text-center rounded mt-30 mb-10" >
+      <form @submit.prevent="handleSubmit" class="bg-orange-600 m-2 p-4 rounded" >
+        <div >
+          <input class="text-center border rounded my-5 " type="email"
+                 placeholder="Enter your email" v-model.trim="email" >
+        </div>
+        <div>
+          <input class="text-center border my-5 rounded" type="password"
+                 placeholder="Enter your password" v-model.trim="password">
+        </div>
+        <div>
+          <input class="text-center border my-5 rounded" type="password"
+                 placeholder="Repeat your password" v-model.trim="password">
+        </div>
+        <div class="mx-auto">
+          <button class="text-center border rounded my-5  bg-gray-400 px-3"  type="submit">Log In</button>
+        </div>
+      </form>
+
+
+    </div>
+
   </div>
+
+
 </template>
 
 <script setup>

@@ -1,5 +1,5 @@
 import {defineStore} from "pinia";
-import {db,auth} from './firebaseConfig'
+import {db,auth} from '../firebaseConfig'
 import {
     query,
     collection,
@@ -11,7 +11,7 @@ import {
     deleteDoc,
     updateDoc
 } from 'firebase/firestore/lite'
-import router from "./router";
+import router from "../router";
 
 export const useDatabaseStore = defineStore("database",{
     state:()=>({
@@ -98,7 +98,7 @@ export const useDatabaseStore = defineStore("database",{
                 const docRef = doc(db,"urls", id);
                 const docSnap = await getDoc(docRef);
 
-                return docSnap.data();
+                return docSnap.data().cliente;
             }catch (error)
             {
                 console.log(error);
@@ -106,6 +106,7 @@ export const useDatabaseStore = defineStore("database",{
                 this.loadingDoc = false;
             }
         },
+        
 
         async updateUrl(id, costumer){
             this.loadingDoc = true;
@@ -118,8 +119,10 @@ export const useDatabaseStore = defineStore("database",{
                 }
 
                 if (docSnap.data().user === auth.currentUser.uid) {
+                    console.log("fe")
                     await updateDoc(docRef, {
                         cliente: costumer,
+                        
                     });
                     this.documents = this.documents.map((item) =>
                         item.id === id ? { ...item, cliente: costumer } : item
